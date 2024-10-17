@@ -40,4 +40,7 @@ describe('sumNumbersInString', () => {
     it('multiple seperators together',()=>{
         expect(SumOfString('1\n 5, 9')).toBe(15)
     })
+    it('custom single seperator',()=>{
+        expect(SumOfString('//;\n1;5;9')).toBe(15)
+    })
 })
