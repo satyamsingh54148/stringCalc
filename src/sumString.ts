@@ -1,3 +1,5 @@
+import * as readline from 'readline';
+
 export function SumOfString(input: string): number{
     var result = 0;
     var newLineIndex = -1;
@@ -34,4 +36,42 @@ export function SumOfString(input: string): number{
         }
     }
     return result;
+}
+
+export function inputFromTerminal() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    function askForMultilineInput(inputLines: string[] = []) {
+        rl.question("Enter a line (or press Enter to finish): ", (line) => {
+            if (line === "") {
+                const input = inputLines.join('\n');
+                try {
+                    const result = SumOfString(input);
+                    console.log(`Sum = ${result}`);
+                } catch (error: any) {
+                    console.error(error.message);
+                }
+                
+                rl.question("Press Q to exit or any other key to continue: ", (choice) => {
+                    if (choice.toLowerCase() === 'q') {
+                        console.log("Exiting...");
+                        rl.close();
+                    } else {
+                        askForMultilineInput();
+                    }
+                });
+            } else {
+                inputLines.push(line);
+                askForMultilineInput(inputLines);
+            }
+        });
+    }
+
+    askForMultilineInput();
+}
+
+if (require.main === module) {
+    inputFromTerminal();
 }

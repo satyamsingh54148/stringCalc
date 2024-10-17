@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
-    "start": "tsc && node dist/index.js"
+    "start": "tsc && node dist/sumString.js"
   },
   "keywords": [],
   "author": "Satyam Singh",
