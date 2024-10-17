@@ -43,4 +43,17 @@ describe('sumNumbersInString', () => {
     it('custom single seperator',()=>{
         expect(SumOfString('//;\n1;5;9')).toBe(15)
     })
+    it('custom multiple character seperator',()=>{
+        expect(SumOfString('//[;;;]\n1;;;5;;;9')).toBe(15)
+    })
+    it('custom multiple character seperator',()=>{
+        expect(SumOfString('//[***]\n1***5***9')).toBe(15)
+    })
+    it('custom single character multiple seperators',()=>{
+        expect(SumOfString('//[*][%]\n1*2%3')).toBe(6)
+    })
+    it('custom multiple character multiple seperators',()=>{
+        expect(SumOfString('//[***] [;;;]\n1***5;;;9')).toBe(15)
+    })
+    
 })
