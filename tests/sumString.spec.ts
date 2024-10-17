@@ -37,4 +37,7 @@ describe('sumNumbersInString', () => {
     it('mixed seperators 11 number',()=>{
         expect(SumOfString('5\n6,8 9,21\n67\n7 6 11,17 23')).toBe(180)
     });
+    it('multiple seperators together',()=>{
+        expect(SumOfString('1\n 5, 9')).toBe(15)
+    })
 })
