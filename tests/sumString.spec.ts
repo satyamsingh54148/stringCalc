@@ -55,5 +55,11 @@ describe('sumNumbersInString', () => {
     it('custom multiple character multiple seperators',()=>{
         expect(SumOfString('//[***] [;;;]\n1***5;;;9')).toBe(15)
     })
+    it('Negative number',()=>{
+        expect(()=>SumOfString('1,2,-3,4')).toThrow("Negative Number not allowed: -3")
+    })
+    it('Negative numbers',()=>{
+        expect(()=>SumOfString('1,-2,-3,4')).toThrow("Negative Number not allowed: -2, -3")
+    })
     
 })

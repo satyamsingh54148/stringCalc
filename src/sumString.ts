@@ -2,6 +2,7 @@ export function SumOfString(input: string): number{
     var result = 0;
     var newLineIndex = -1;
     var arr: string[];
+    let negatives: string[] = [];
     let seperators = /[\s,]+/;  // default regex for blank, newline and comma
     let multipleSeperator = /\[([^\]]+)\]/g; // regex to check multiple square brackets and copy content
     if (input !== ""){
@@ -9,7 +10,6 @@ export function SumOfString(input: string): number{
             newLineIndex = input.indexOf('\n');
             if (newLineIndex !== -1){
                 let seperatorString = input.substring(2,newLineIndex);
-
                 let multiple = seperatorString.match(multipleSeperator);
                 if (multiple){
                     seperatorString = multiple.join('|');
@@ -20,7 +20,15 @@ export function SumOfString(input: string): number{
         }
         arr = input.split(seperators);
         for (let i in arr){
-            result += Number(arr[i]);
+            let no = Number(arr[i]);
+            if (no >= 0){
+                result += no;
+            } else{
+                negatives.push(arr[i]);
+            }
+        }
+        if (negatives.length>0){
+            throw new Error(`Negative Number not allowed: ${negatives.join(", ")}`);   
         }
     }
     return result;
