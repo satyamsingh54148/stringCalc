@@ -61,5 +61,7 @@ describe('sumNumbersInString', () => {
     it('Negative numbers',()=>{
         expect(()=>SumOfString('1,-2,-3,4')).toThrow("Negative Number not allowed: -2, -3")
     })
-    
+    it('Large number',()=>{
+        expect(SumOfString('1,2,1002,4')).toBe(7)
+    })
 })

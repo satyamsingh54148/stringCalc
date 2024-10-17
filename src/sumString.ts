@@ -21,7 +21,9 @@ export function SumOfString(input: string): number{
         arr = input.split(seperators);
         for (let i in arr){
             let no = Number(arr[i]);
-            if (no >= 0){
+            if (no>=1000){
+                continue;
+            }else if (no >= 0){
                 result += no;
             } else{
                 negatives.push(arr[i]);
